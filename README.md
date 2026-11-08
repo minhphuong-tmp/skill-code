@@ -42,16 +42,15 @@ flowchart TD
 
 ---
 
-## 📂 Danh Mục 12 Kỹ Năng (Skills)
+## 📂 Danh Mục 9 Meta-Skills Cốt Lõi (Dùng Chung Mọi Dự Án)
+
+> 💡 **Lưu ý:** Các file cẩm nang thực tế (`STEP-0-*-after-scan-*.md`) sẽ **tự động được sinh ra** sau khi bạn chạy quét Bước 0 trên dự án cụ thể.
 
 | Bước | Tên File Skill | Vai Trò & Chức Năng |
 | :---: | :--- | :--- |
 | **0.1** | [`STEP-0-scan-codebase.md`](STEP-0-scan-codebase.md) | Meta-Skill quét AST & xuất `database-schema.md` qua Repomix |
-| **0.1** | [`STEP-0-code-after-scan-codebase.md`](STEP-0-code-after-scan-codebase.md) | Cẩm nang kiến trúc kỹ thuật: Where-to-write, Bản đồ Database, Multi-Tenancy IDOR |
-| **0.2** | [`STEP-0-scan-requirement.md`](STEP-0-scan-requirement.md) | Meta-Skill quét toàn bộ tài liệu & domain models |
-| **0.2** | [`STEP-0-requirement-after-scan-codebase.md`](STEP-0-requirement-after-scan-codebase.md) | Hiến pháp nghiệp vụ: Ngôn ngữ miền (Ubiquitous Language), State Machine, RBAC |
-| **0.3** | [`STEP-0-scan-e2e-local.md`](STEP-0-scan-e2e-local.md) | Meta-Skill quét khảo sát E2E local, bật 8 services, seed webhook, xuất clip E2E probe hoàn chỉnh |
-| **0.3** | [`STEP-0-e2e-after-scan-codebase.md`](STEP-0-e2e-after-scan-codebase.md) | Cẩm nang E2E local sau khi quét: Trạng thái services, lý do offline, quy trình quay clip |
+| **0.2** | [`STEP-0-scan-requirement.md`](STEP-0-scan-requirement.md) | Meta-Skill quét toàn bộ tài liệu, rules & bóc tách State Machine domain |
+| **0.3** | [`STEP-0-scan-e2e-local.md`](STEP-0-scan-e2e-local.md) | Meta-Skill khảo sát E2E local, tự động nhận diện services và xuất clip probe |
 | **1** | [`STEP-1-write-requirement-feature.md`](STEP-1-write-requirement-feature.md) | Soạn thảo User Story & Hợp đồng dữ liệu `specs/requirement-feature-<mô tả>.md` |
 | **2** | [`STEP-2-write-testcases-feature.md`](STEP-2-write-testcases-feature.md) | Sinh ma trận 5 nhóm ISTQB `test-case-feature` & file đặc tả màn hình `ui-flow-e2e` |
 | **3** | [`STEP-3-write-test-code.md`](STEP-3-write-test-code.md) | Sinh code Unit & Integration Test `tests/test_xxx.py` (Chạy báo ĐỎ - FAIL) |
@@ -61,7 +60,12 @@ flowchart TD
 
 ---
 
-## 🛠️ Danh Mục 7 Công Cụ Tự Động Hóa (`scripts/`)
+## 🛠️ Công Cụ Cài Đặt & Bộ Scripts Tự Động Hóa
+
+### 1. Script Cài Đặt Toàn Bộ Phụ Thuộc (One-Click Setup)
+* [`setup.sh`](setup.sh) (hoặc `./setup`): Tự động cài đặt 100% phụ thuộc cho bất kỳ máy mới nào (Python `pytest`, Node.js, `repomix`, `ffmpeg` bóc tách video 1 FPS, Playwright, Chromium Browser và Midscene AI).
+
+### 2. Danh Mục 7 Công Cụ Tự Động Hóa (`scripts/`)
 
 | File Script | Cách Sử Dụng | Chức Năng |
 | :--- | :--- | :--- |
