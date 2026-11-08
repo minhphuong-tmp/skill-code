@@ -7,12 +7,14 @@
 
 set -e
 
-# Xác định thư mục gốc của dự án (nằm trên thư mục SKILL Code hoặc ngay tại thư mục hiện tại)
+# Xác định thư mục scripts, thư mục SKILL Code và thư mục gốc của dự án
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [ -f "$SCRIPT_DIR/../package.json" ] || [ -d "$SCRIPT_DIR/../.git" ]; then
-    PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SKILL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+if [ -d "$SKILL_DIR/../.git" ] || [ -f "$SKILL_DIR/../package.json" ] || [ -f "$SKILL_DIR/../pyproject.toml" ]; then
+    PROJECT_ROOT="$(cd "$SKILL_DIR/.." && pwd)"
 else
-    PROJECT_ROOT="$SCRIPT_DIR"
+    PROJECT_ROOT="$SKILL_DIR"
 fi
 
 # Màu sắc thông báo terminal
@@ -186,10 +188,7 @@ fi
 # 8. PHÂN QUYỀN THỰC THI (chmod +x) CHO SCRIPTS
 # ------------------------------------------------------------------------------
 log_step "BƯỚC 8: Cấp Quyền Thực Thi Cho Toàn Bộ Scripts"
-chmod +x "$SCRIPT_DIR"/setup.sh "$SCRIPT_DIR"/setup 2>/dev/null || true
-if [ -d "$SCRIPT_DIR/scripts" ]; then
-    chmod +x "$SCRIPT_DIR"/scripts/*.py "$SCRIPT_DIR"/scripts/*.sh 2>/dev/null || true
-fi
+chmod +x "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/*.sh 2>/dev/null || true
 log_success "Đã phân quyền thực thi cho toàn bộ scripts!"
 
 # ------------------------------------------------------------------------------

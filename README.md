@@ -2,7 +2,7 @@
 
 > **Thư mục trung tâm:** Chứa toàn bộ **11 Cẩm Nang Kỹ Năng (Skills)** và **6 Công Cụ Tự Động Hóa (Scripts)** điều phối toàn bộ chu trình phát triển phần mềm chuẩn mực từ **Step 0 đến Step 6**.
 >
-> 💡 **Khởi động trên máy mới (One-Click Setup):** Chỉ cần chạy lệnh `./setup` (hoặc `./setup.sh`) tại thư mục gốc để tự động cài đặt Node.js, FFMPEG, Chromium, Playwright và Midscene AI!
+> 💡 **Khởi động trên máy mới (One-Click Setup):** Chỉ cần chạy lệnh `./scripts/setup.sh` (hoặc `bash "SKILL Code/scripts/setup.sh"`) để tự động cài đặt Node.js, FFMPEG, Chromium, Playwright, Repomix và Midscene AI!
 
 ---
 
@@ -60,18 +60,14 @@ flowchart TD
 
 ---
 
-## 🛠️ Công Cụ Cài Đặt & Bộ Scripts Tự Động Hóa
-
-### 1. Script Cài Đặt Toàn Bộ Phụ Thuộc (One-Click Setup)
-* [`setup.sh`](setup.sh) (hoặc `./setup`): Tự động cài đặt 100% phụ thuộc cho bất kỳ máy mới nào (Python `pytest`, Node.js, `repomix`, `ffmpeg` bóc tách video 1 FPS, Playwright, Chromium Browser và Midscene AI).
-
-### 2. Danh Mục 7 Công Cụ Tự Động Hóa (`scripts/`)
+## 🛠️ Danh Mục 8 Công Cụ Tự Động Hóa (`scripts/`)
 
 | File Script | Cách Sử Dụng | Chức Năng |
 | :--- | :--- | :--- |
-| [`scripts/scan_codebase.py`](scripts/scan_codebase.py) | `python3 scripts/scan_codebase.py` | Quét AST, nén skeleton và thống kê 12 bảng định lượng |
-| [`scripts/scan_requirements.py`](scripts/scan_requirements.py) | `python3 scripts/scan_requirements.py` | Thu hoạch tài liệu rules và bóc tách domain entities |
-| [`scripts/run_e2e_local.py`](scripts/run_e2e_local.py) | `python3 scripts/run_e2e_local.py --check-services`<br>`python3 scripts/run_e2e_local.py --spec e2e/auth.spec.ts` | Kiểm tra trạng thái cổng local, chạy Playwright có cờ quay clip `--video=on`, lưu video vào `artifacts/videos/` |
+| [`scripts/setup.sh`](scripts/setup.sh) | `bash scripts/setup.sh` | **One-Click Setup:** Tự động cài đặt 100% phụ thuộc (Python pytest, Node.js, Repomix, FFMPEG 1 FPS, Playwright Chromium & Midscene AI) |
+| [`scripts/scan_codebase.py`](scripts/scan_codebase.py) | `python3 scripts/scan_codebase.py .` | Quét AST, nén skeleton và thống kê 12 bảng định lượng |
+| [`scripts/scan_requirements.py`](scripts/scan_requirements.py) | `python3 scripts/scan_requirements.py .` | Thu hoạch tài liệu rules và bóc tách domain entities |
+| [`scripts/run_e2e_local.py`](scripts/run_e2e_local.py) | `python3 scripts/run_e2e_local.py --check-services`<br>`python3 scripts/run_e2e_local.py --spec <spec_file>` | Kiểm tra trạng thái cổng local theo `services.json`, chạy Playwright có cờ quay clip `--video=on`, lưu video vào `artifacts/videos/` |
 | [`scripts/analyze_e2e_clip.py`](scripts/analyze_e2e_clip.py) | `python3 scripts/analyze_e2e_clip.py --video <clip.webm> --feature <name>` | Bóc tách keyframes 1 FPS qua ffmpeg + Lọc sạch 100% log rác background, chỉ giữ log riêng của feature |
 | [`scripts/seed_webhook.py`](scripts/seed_webhook.py) | `python3 scripts/seed_webhook.py --target all` hoặc `--url <url>` | Bắn dữ liệu mẫu mock webhook / event vào Backend & Microservices (hỗ trợ tùy biến URL & payload) |
 | [`scripts/run_unit_tests.py`](scripts/run_unit_tests.py) | `python3 scripts/run_unit_tests.py` | Chạy bộ Unit/Integration Test, hiển thị rõ ràng trạng thái ĐỎ (FAIL) hoặc XANH (PASS) |
